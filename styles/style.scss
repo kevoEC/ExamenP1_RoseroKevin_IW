@@ -158,9 +158,138 @@ p {
   
 
 /* style 2nd, 3rd & 4th component - mobile */
+.grow-together-block {
+  /* as per design set new values for padding, gap */ 
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  box-shadow: 0 0 0.4rem $clr-neutral-grayish-blue;
+  border-radius: 2rem;
 
+    @extend %base-styles;
+    padding:  5rem;
+    grid-template-areas:
+    "grow-together-block__slider"
+    "grow-together-block__feature-title"
+    "grow-together-block__feature-info";
+
+    &__feature-title {
+    padding: 5rem 0 2rem 0 ;
+    font-size: 2rem;
+    font-weight: bold; // Agrega negrita
+    }
+
+    &__feature-info {
+    font-size: 1.4rem;
+    text-align: center;
+    color: $clr-neutral-grayish-blue;
+    }
+
+&__slider {
+max-width: 650px;
+margin: 0 auto;
+position: relative;
+}
+
+&__slides {
+position: relative;
+display: flex;
+overflow: hidden;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+&__slides:hover .grow-together-block__slide {
+animation-play-state: running;
+}
+
+&__slide {
+width: auto;
+flex-shrink: 0;
+animation-name: slide;
+animation-duration: 20s;
+animation-iteration-count: infinite;
+animation-timing-function: linear;
+transition: transform 0.5s ease;
+margin: 0;
+padding: 0;
+
+img {
+  width: 25%;
+  vertical-align: top;
+}
+
+a {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+}
+
+&:hover .grow-together-block__slide {
+animation-play-state: paused;
+}
+
+.grow-together-block__slide:target {
+animation-name: none;
+position: absolute;
+left: 0;
+top: 0;
+right: 0;
+bottom: 0;
+z-index: 50;
+}
+
+&__slider-controls {
+position: absolute;
+left: 0;
+right: 0;
+bottom: 0;
+text-align: center;
+padding: 5px;
+background-color: rgba(0, 0, 0, 0.5);
+z-index: 100;
+
+li {
+  margin: 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+a {
+  display: inline-block;
+  vertical-align: top;
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+  pointer-events: none;
+}
+}
+}
+
+/* Animación del slider */
+@keyframes slide {
+0% {
+transform: translateX(0);
+}
+20% {
+transform: translateX(-100%);
+}
+40% {
+transform: translateX(-200%);
+}
+60% {
+transform: translateX(-300%);
+}
+80% {
+transform: translateX(-400%);
+}
+100% {
+transform: translateX(0);
+}
+}
 // Estilos específicos para cada bloque
-.grow-together-block,
 .flowing-conversations-block,
 .your-users-block {
   width: 90%;
@@ -173,9 +302,6 @@ p {
     @extend %base-styles;
     padding:  5rem;
     grid-template-areas:
-    "grow-together-block__feature-image"
-    "grow-together-block__feature-title"
-    "grow-together-block__feature-info"
     "flowing-conversations-block__feature-image"
     "flowing-conversations-block__feature-title"
     "flowing-conversations-block__feature-info"
@@ -433,7 +559,139 @@ $footer-block-padding: 0 10rem 6rem 10rem;
         );
         }
     }
-  .grow-together-block,
+/* Slider styles */
+  .grow-together-block {
+        /* as per design set new values for padding, gap */
+
+        width: 82%;
+
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1rem 16rem;
+    
+        padding: 4rem 2rem 4rem 12rem;
+    
+        grid-template-areas: 
+        "grow-together-block__feature-title  grow-together-block__slider"
+        "grow-together-block__feature-info   grow-together-block__slider";
+
+        &__feature-title {
+            text-align: start;
+            align-self: flex-end;
+            justify-self: start;
+            font-size: 4rem;
+        }
+    
+        &__feature-info {
+            text-align: start;
+            justify-self: start;
+            font-size: 2.2rem;
+        }
+    
+        &__feature-image {
+            width: 100%;
+            margin-bottom: 0;
+        }
+    
+    &__slider {
+      max-width: 650px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    &__slides {
+      position: relative;
+      display: flex;
+      overflow: hidden;
+      list-style: none;
+    }
+    &__slides:hover .grow-together-block__slide {
+      animation-play-state: running;
+    }
+
+    &__slide {
+      width: auto;
+      flex-shrink: 0;
+      animation-name: slide;
+      animation-duration: 20s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+      transition: transform 0.5s ease;
+
+      img {
+        width: 55%;
+        vertical-align: top;
+      }
+
+      a {
+        width: 100%;
+        display: inline-block;
+        position: relative;
+      }
+    }
+
+    &:hover .grow-together-block__slide {
+      animation-play-state: paused;
+    }
+
+    .grow-together-block__slide:target {
+      animation-name: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 50;
+    }
+
+    &__slider-controls {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+      padding: 5px;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 100;
+
+      li {
+        margin: 0;
+        display: inline-block;
+        vertical-align: top;
+      }
+
+      a {
+        display: inline-block;
+        vertical-align: top;
+        text-decoration: none;
+        color: white;
+        font-size: 1.5rem;
+        pointer-events: none;
+      }
+    }
+  }
+
+  /* Animación del slider */
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    20% {
+      transform: translateX(-100%);
+    }
+    40% {
+      transform: translateX(-200%);
+    }
+    60% {
+      transform: translateX(-300%);
+    }
+    80% {
+      transform: translateX(-400%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
   .your-users-block,
   .flowing-conversations-block {
     /* as per design set new values for padding, gap */
@@ -446,8 +704,6 @@ $footer-block-padding: 0 10rem 6rem 10rem;
     padding: 4rem 2rem 4rem 12rem;
 
     grid-template-areas: 
-    "grow-together-block__feature-title grow-together-block__feature-image"
-    "grow-together-block__feature-info grow-together-block__feature-image"
     "flowing-conversations-block__feature-image flowing-conversations-block__feature-title"
     "flowing-conversations-block__feature-image flowing-conversations-block__feature-info"
     "your-users-block__feature-title your-users-block__feature-image"
@@ -471,8 +727,6 @@ $footer-block-padding: 0 10rem 6rem 10rem;
         margin-bottom: 0;
     }
   }
-
-
 
   /*  desktop - component 5 styling  */
 
@@ -582,6 +836,10 @@ $footer-block-padding: 0 10rem 6rem 10rem;
 
 .grow-together-block__feature-info {
   grid-area: grow-together-block__feature-info;
+}
+
+.grow-together-block__slider{
+  grid-area: grow-together-block__slider;
 }
 
 /* component 3 */

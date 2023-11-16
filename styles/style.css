@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* Write GOOD comments so that next developer ... */
 /* ( who happens to be a killer psycopath & knows where you stay ). */
 /* He's going to maintain this code; need NOT have to get back to you */
@@ -19,9 +20,8 @@
   --fw-700: 700;
 }
 
-.grow-together-block,
 .flowing-conversations-block,
-.your-users-block {
+.your-users-block, .grow-together-block {
   font-family: var(--ff-primary);
 }
 
@@ -122,7 +122,120 @@ p {
 }
 
 /* style 2nd, 3rd & 4th component - mobile */
-.grow-together-block,
+.grow-together-block {
+  /* as per design set new values for padding, gap */
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  box-shadow: 0 0 0.4rem var(--clr-neutral-grayish-blue);
+  border-radius: 2rem;
+  padding: 5rem;
+  grid-template-areas: "grow-together-block__slider" "grow-together-block__feature-title" "grow-together-block__feature-info";
+}
+.grow-together-block__feature-title {
+  padding: 5rem 0 2rem 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+.grow-together-block__feature-info {
+  font-size: 1.4rem;
+  text-align: center;
+  color: var(--clr-neutral-grayish-blue);
+}
+.grow-together-block__slider {
+  max-width: 650px;
+  margin: 0 auto;
+  position: relative;
+}
+.grow-together-block__slides {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.grow-together-block__slides:hover .grow-together-block__slide {
+  animation-play-state: running;
+}
+.grow-together-block__slide {
+  width: auto;
+  flex-shrink: 0;
+  animation-name: slide;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transition: transform 0.5s ease;
+  margin: 0;
+  padding: 0;
+}
+.grow-together-block__slide img {
+  width: 25%;
+  vertical-align: top;
+}
+.grow-together-block__slide a {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+.grow-together-block:hover .grow-together-block__slide {
+  animation-play-state: paused;
+}
+.grow-together-block .grow-together-block__slide:target {
+  animation-name: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+}
+.grow-together-block__slider-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+.grow-together-block__slider-controls li {
+  margin: 0;
+  display: inline-block;
+  vertical-align: top;
+}
+.grow-together-block__slider-controls a {
+  display: inline-block;
+  vertical-align: top;
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+  pointer-events: none;
+}
+
+/* Animación del slider */
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-100%);
+  }
+  40% {
+    transform: translateX(-200%);
+  }
+  60% {
+    transform: translateX(-300%);
+  }
+  80% {
+    transform: translateX(-400%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 .flowing-conversations-block,
 .your-users-block {
   width: 90%;
@@ -132,16 +245,14 @@ p {
   box-shadow: 0 0 0.4rem var(--clr-neutral-grayish-blue);
   border-radius: 2rem;
   padding: 5rem;
-  grid-template-areas: "grow-together-block__feature-image" "grow-together-block__feature-title" "grow-together-block__feature-info" "flowing-conversations-block__feature-image" "flowing-conversations-block__feature-title" "flowing-conversations-block__feature-info" "your-users-block__feature-image" "your-users-block__feature-title" "your-users-block__feature-info";
+  grid-template-areas: "flowing-conversations-block__feature-image" "flowing-conversations-block__feature-title" "flowing-conversations-block__feature-info" "your-users-block__feature-image" "your-users-block__feature-title" "your-users-block__feature-info";
 }
-.grow-together-block__feature-title,
 .flowing-conversations-block__feature-title,
 .your-users-block__feature-title {
   padding: 5rem 0 2rem 0;
   font-size: 2rem;
   font-weight: bold;
 }
-.grow-together-block__feature-info,
 .flowing-conversations-block__feature-info,
 .your-users-block__feature-info {
   font-size: 1.4rem;
@@ -291,7 +402,118 @@ p {
     justify-self: center;
   }
   /*  desktop - component 2, 3, 4 styling  */
-  .grow-together-block,
+  /* Slider styles */
+  .grow-together-block {
+    /* as per design set new values for padding, gap */
+    width: 82%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem 16rem;
+    padding: 4rem 2rem 4rem 12rem;
+    grid-template-areas: "grow-together-block__feature-title  grow-together-block__slider" "grow-together-block__feature-info   grow-together-block__slider";
+  }
+  .grow-together-block__feature-title {
+    text-align: start;
+    align-self: flex-end;
+    justify-self: start;
+    font-size: 4rem;
+  }
+  .grow-together-block__feature-info {
+    text-align: start;
+    justify-self: start;
+    font-size: 2.2rem;
+  }
+  .grow-together-block__feature-image {
+    width: 100%;
+    margin-bottom: 0;
+  }
+  .grow-together-block__slider {
+    max-width: 650px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .grow-together-block__slides {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    list-style: none;
+  }
+  .grow-together-block__slides:hover .grow-together-block__slide {
+    animation-play-state: running;
+  }
+  .grow-together-block__slide {
+    width: auto;
+    flex-shrink: 0;
+    animation-name: slide;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transition: transform 0.5s ease;
+  }
+  .grow-together-block__slide img {
+    width: 55%;
+    vertical-align: top;
+  }
+  .grow-together-block__slide a {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+  }
+  .grow-together-block:hover .grow-together-block__slide {
+    animation-play-state: paused;
+  }
+  .grow-together-block .grow-together-block__slide:target {
+    animation-name: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+  }
+  .grow-together-block__slider-controls {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+  }
+  .grow-together-block__slider-controls li {
+    margin: 0;
+    display: inline-block;
+    vertical-align: top;
+  }
+  .grow-together-block__slider-controls a {
+    display: inline-block;
+    vertical-align: top;
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    pointer-events: none;
+  }
+  /* Animación del slider */
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    20% {
+      transform: translateX(-100%);
+    }
+    40% {
+      transform: translateX(-200%);
+    }
+    60% {
+      transform: translateX(-300%);
+    }
+    80% {
+      transform: translateX(-400%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
   .your-users-block,
   .flowing-conversations-block {
     /* as per design set new values for padding, gap */
@@ -299,9 +521,8 @@ p {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem 16rem;
     padding: 4rem 2rem 4rem 12rem;
-    grid-template-areas: "grow-together-block__feature-title grow-together-block__feature-image" "grow-together-block__feature-info grow-together-block__feature-image" "flowing-conversations-block__feature-image flowing-conversations-block__feature-title" "flowing-conversations-block__feature-image flowing-conversations-block__feature-info" "your-users-block__feature-title your-users-block__feature-image" "your-users-block__feature-info your-users-block__feature-image";
+    grid-template-areas: "flowing-conversations-block__feature-image flowing-conversations-block__feature-title" "flowing-conversations-block__feature-image flowing-conversations-block__feature-info" "your-users-block__feature-title your-users-block__feature-image" "your-users-block__feature-info your-users-block__feature-image";
   }
-  .grow-together-block__feature-title,
   .your-users-block__feature-title,
   .flowing-conversations-block__feature-title {
     text-align: start;
@@ -309,14 +530,12 @@ p {
     justify-self: start;
     font-size: 4rem;
   }
-  .grow-together-block__feature-info,
   .your-users-block__feature-info,
   .flowing-conversations-block__feature-info {
     text-align: start;
     justify-self: start;
     font-size: 2.2rem;
   }
-  .grow-together-block__feature-image,
   .your-users-block__feature-image,
   .flowing-conversations-block__feature-image {
     width: 100%;
@@ -407,6 +626,10 @@ p {
 
 .grow-together-block__feature-info {
   grid-area: grow-together-block__feature-info;
+}
+
+.grow-together-block__slider {
+  grid-area: grow-together-block__slider;
 }
 
 /* component 3 */
